@@ -1,17 +1,40 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { BrowserRouter } from 'react-router-dom';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import { Provider } from 'react-redux';
+import { Store } from 'redux';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+import configureStore, { AppState } from './store/Store';
+import { getAllPosts } from './actions/FeedActions';
+
+import Routes from './routes';
+
+import GlobalStyles from './styles/global';
+
+interface Props {
+  store: Store<AppState>;
+}
+
+/* 
+Create a root component that receives the store via props
+and wraps the App component with Provider, giving props to containers
+*/
+const Root: React.SFC<Props> = props => {
+  return (
+    <Provider store={props.store}>
+      <BrowserRouter>
+        <Routes />
+        <GlobalStyles />
+      </BrowserRouter>
+    </Provider>
+  );
+};
+
+// Generate the Store
+const store = configureStore();
+store.dispatch(getAllPosts());
+
+ReactDOM.render(<Root store={store} />, document.getElementById(
+  'root'
+  ) as HTMLElement);
