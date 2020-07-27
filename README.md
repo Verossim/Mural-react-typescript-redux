@@ -4,6 +4,7 @@ Mural de postagem realizado para testes do curseduca
 ## Extensões
 - [React](https://pt-br.reactjs.org/): Uma biblioteca JavaScript para criar interfaces de usuário
 - [Redux](https://redux.js.org/): A Predictable State Container for JS Apps
+- [Redux-Thunk](https://github.com/reduxjs/redux-thunk): Thunk middleware for Redux.
 - [axios](https://github.com/axios/axios): Promise based HTTP client for the browser and node.js
 - [Styled-Components](https://styled-components.com/): Visual primitives for the component age
 - [React-wysiwyg](https://github.com/jpuri/react-draft-wysiwyg): A Wysiwyg editor built using ReactJS and DraftJS libraries
