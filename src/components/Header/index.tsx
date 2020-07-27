@@ -1,21 +1,16 @@
 import * as React from 'react';
 
+import PostSearch from '../../containers/SearchPost';
+
 import { FiBell } from 'react-icons/fi';
-import { Head, Search, Form, Profile } from './styles';
+import { Head, Search, Profile } from './styles';
 
 const Header: React.SFC<{}> = () => {
   return (
     <Head>
         <a href="/">Curseduca</a>
         <Search>
-          <input placeholder="Busque aqui" />
-          <Form>
-            <input type="checkbox" name="Autor" checked />
-            <p>Autor</p>
-            <input type="checkbox" name="Categoria" />
-            <p>Categoria</p>
-          </Form>
-          <button type="submit">Pesquisar</button>
+          <PostSearch searchPosts={PostSearch} />
         </Search>
         <Profile>
           <FiBell size={20} />
