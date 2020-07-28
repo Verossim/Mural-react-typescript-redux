@@ -1,6 +1,6 @@
 import { ActionCreator, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import axios from 'axios';
+import api from '../services/api';
 
 import { Post, PostState } from '../reducers/FeedReducer';
 
@@ -28,7 +28,7 @@ export const getAllPosts: ActionCreator<
 > = () => {
   return async (dipatch: Dispatch) => {
     try {
-      const response = await axios.get('http://localhost:3333');
+      const response = await api.get('/posts');
       dipatch({
         posts: response.data.results,
         type: PostActionTypes.GET_ALL,

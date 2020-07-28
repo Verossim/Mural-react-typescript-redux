@@ -17,7 +17,7 @@ export interface PostState {
 
 // Define the initial state
 const initalPostState: PostState = {
-  posts: [{ titulo: 'TESTE', categoria: 1, conteudo: 'blablabla' }],
+  posts: [],
 }
 
 export const postReducer: Reducer<PostState, PostAction> = (

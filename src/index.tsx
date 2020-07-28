@@ -9,6 +9,7 @@ import configureStore, { AppState } from './store/Store';
 import { getAllPosts } from './actions/FeedActions';
 
 import Routes from './routes';
+import { AuthProvider } from './context/AuthContext';
 
 import GlobalStyles from './styles/global';
 
@@ -22,12 +23,14 @@ and wraps the App component with Provider, giving props to containers
 */
 const Root: React.SFC<Props> = props => {
   return (
-    <Provider store={props.store}>
+    <AuthProvider>
+      <Provider store={props.store}>
       <BrowserRouter>
         <Routes />
         <GlobalStyles />
       </BrowserRouter>
-    </Provider>
+      </Provider>
+    </AuthProvider>
   );
 };
 
