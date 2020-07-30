@@ -30,3 +30,6 @@ yarn start
 ```
 
 O site estará disponível em **localhost:3000**
+
+### Observações
+O site irá buscar as requisições na api localhots:3333, que está localizado em [src/api/api.ts](https://github.com/Verossim/Mural-react-typescript-redux/blob/master/src/services/api.ts)
