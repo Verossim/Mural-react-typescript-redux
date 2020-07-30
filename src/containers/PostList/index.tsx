@@ -13,44 +13,23 @@ interface Props {
   posts: Post[];
 }
 
-class PostList extends React.Component<Props> {
-  public render() {
-    const { posts } = this.props;
-    return (
-      <Posts>
-        <a href='/'>
-          <img src='https://www.alliancerehabmed.com/wp-content/uploads/icon-avatar-default.png'
-           alt='Usuario' />
-          <div>
-            {posts &&
-            posts.map(post => {
-              return (
-              <strong key={post.titulo} >{post.titulo}</strong>
-              );
-            })
-            }
-            {posts &&
-            posts.map(post => {
-              return (
-              <p key={post.categoria} >Categoria: {post.categoria}</p>
-              );
-            })
-            }
-            {posts &&
-            posts.map(post => {
-              return (
-              <p key={post.conteudo} >{post.conteudo}</p>
-              );
-            })
-            }
-          </div>
+const PostList: React.FC<Props> = ({ posts }) => (
+  <Posts>
+    {posts.map(post => (
+      <a key={post.title} href='/'>
+      <img src='https://www.alliancerehabmed.com/wp-content/uploads/icon-avatar-default.png'
+      alt='Usuario' />
+            <div>
+              <strong>{post.title}</strong>
+              <p>Categoria: {post.id_category}</p>
+              <p>{post.text}</p>
+            </div>
 
-          <FiChevronRight size={20} />
-        </a>
-      </Posts>
-    );
-  }
-}
+      <FiChevronRight size={20} />
+    </a>
+    ))}
+  </Posts>
+);
 
 const mapStateToProps = (store: AppState) => {
   return {

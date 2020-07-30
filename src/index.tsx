@@ -9,7 +9,7 @@ import configureStore, { AppState } from './store/Store';
 import { getAllPosts } from './actions/FeedActions';
 
 import Routes from './routes';
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider } from './hooks/AuthContext';
 
 import GlobalStyles from './styles/global';
 
@@ -22,6 +22,7 @@ Create a root component that receives the store via props
 and wraps the App component with Provider, giving props to containers
 */
 const Root: React.SFC<Props> = props => {
+
   return (
     <AuthProvider>
       <Provider store={props.store}>

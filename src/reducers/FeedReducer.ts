@@ -5,14 +5,14 @@ import { PostAction, PostActionTypes } from '../actions/FeedActions';
 
 // Define the Post type
 export interface Post {
-  titulo: string;
-  categoria: number;
-  conteudo: string;
+  title: string;
+  id_category: number;
+  text: string;
 }
 
 // Define the Post state
 export interface PostState {
-  readonly posts: Post[]
+  readonly posts: Post[],
 }
 
 // Define the initial state

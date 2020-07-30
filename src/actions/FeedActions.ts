@@ -1,5 +1,6 @@
 import { ActionCreator, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
+
 import api from '../services/api';
 
 import { Post, PostState } from '../reducers/FeedReducer';
@@ -26,11 +27,15 @@ export type PostAction = PostGetAllAction;
 export const getAllPosts: ActionCreator<
   ThunkAction<Promise<any>, PostState, null, PostGetAllAction>
 > = () => {
+  const TOKEN = localStorage.getItem('@curseduca:token');
+  const AuthStr = 'Bearer '.concat(TOKEN || '{}')
   return async (dipatch: Dispatch) => {
     try {
-      const response = await api.get('/posts');
+      const response = await api.get('/posts', {
+        headers: { Authorization: AuthStr }
+      });
       dipatch({
-        posts: response.data.results,
+        posts: response.data,
         type: PostActionTypes.GET_ALL,
       });
     } catch (err) {

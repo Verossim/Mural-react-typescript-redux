@@ -1,17 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import Header from '../components/Header';
 import CreateButton from '../components/CreateButton';
 
 import PostList from '../containers/PostList';
 
-import { AuthContext } from '../context/AuthContext';
+import { useAuth } from '../hooks/AuthContext';
 
 
 const App: React.SFC<{}> = () => {
-  const { signIn } = useContext(AuthContext);
 
-  signIn({ email: 'dev1@curseduca.com', password: 'dev1' });
+  const { signIn } = useAuth();
+  signIn({email: 'dev1@curseduca.com', password: 'dev1'});
 
   return (
     <>
